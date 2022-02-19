@@ -21,14 +21,10 @@ def obtener_dato():
     click.echo(resultado_rutas[1])
     ruta = click.prompt('Ingrese la ruta', type=str)
     resultado_ruta = requests.get('https://invap.herokuapp.com/{}'.format(ruta)).json()
-    if ruta != 'intereses':
-        click.echo(list(resultado_ruta[ruta.capitalize()]))
-        valor = click.prompt('Ingrese el dato a buscar', type=str)
-        click.echo(resultado_ruta[ruta.capitalize()][valor])
-        cerrar_programa()
-    else:
-        click.echo(list(resultado_ruta[ruta.capitalize()]))
-        cerrar_programa()
+    click.echo(list(resultado_ruta[ruta.capitalize()]))
+    valor = click.prompt('Ingrese el dato a buscar', type=str)
+    click.echo(resultado_ruta[ruta.capitalize()][valor])
+    cerrar_programa()
 
 apiinvap.add_command(obtener_dato)
 
